@@ -100,11 +100,19 @@ namespace MediaBrowser.Providers.MediaInfo
                 }
             }
 
-            return new DynamicImageResponse
+            var response = new DynamicImageResponse
             {
                 HasImage = true,
                 Path = path
             };
+
+            // If the MIME type isn’t set, use a fallback value (since the file is saved as .jpg)
+            if (response.Format == null || string.IsNullOrWhiteSpace(response.Format.GetMimeType()))
+            {
+                response.SetFormatFromMimeType("image/jpeg");
+            }
+
+            return response;
         }
 
         private string GetAudioImagePath(Audio item)
