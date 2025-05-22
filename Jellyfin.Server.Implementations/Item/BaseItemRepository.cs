@@ -1552,7 +1552,7 @@ public sealed class BaseItemRepository
         if (!string.IsNullOrEmpty(filter.SearchTerm))
         {
             var searchTerm = filter.SearchTerm.ToLower();
-            baseQuery = baseQuery.Where(e => e.CleanName!.ToLower().Contains(searchTerm) || (e.OriginalTitle != null && e.OriginalTitle.ToLower().Contains(searchTerm)));
+            baseQuery = baseQuery.Where(e => e.CleanName!.ToLower().Contains(searchTerm) || (e.OriginalTitle != null && e.OriginalTitle.ToLower().Contains(searchTerm)) || (e.Name != null && e.Name.ToLower().Contains(searchTerm)) || (e.Artists != null && e.Artists.ToLower().Contains(searchTerm)) || (e.Tags != null && e.Tags.ToLower().Contains(searchTerm)) || (e.Path != null && e.Path.ToLower().Contains(searchTerm)));
         }
 
         if (filter.IsFolder.HasValue)
