@@ -1709,7 +1709,7 @@ public sealed class BaseItemRepository
             }
             else
             {
-                baseQuery = baseQuery.Where(e => e.CleanName!.ToLower().Contains(searchTerm) || (e.OriginalTitle != null && e.OriginalTitle.ToLower().Contains(searchTerm)));
+                baseQuery = baseQuery.Where(e => e.CleanName!.ToLower().Contains(searchTerm) || (e.OriginalTitle != null && e.OriginalTitle.ToLower().Contains(searchTerm)) || (e.Name != null && e.Name.ToLower().Contains(searchTerm)) || (e.Artists != null && e.Artists.ToLower().Contains(searchTerm)) || (e.Tags != null && e.Tags.ToLower().Contains(searchTerm)) || (e.Path != null && e.Path.ToLower().Contains(searchTerm)));
             }
         }
 
